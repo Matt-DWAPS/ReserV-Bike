@@ -1,0 +1,1 @@
+let Slider = new Slider;
