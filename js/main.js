@@ -1,1 +1,1 @@
-let Slider = new Slider;
+let slider = new Slider;
