@@ -21,7 +21,7 @@
     transition: opacity 0.3s ease;
     opacity: 0;
     position: absolute;
-    top: 50%;
+
     font-size: 100px;
     color: rgba(220, 220, 220, 0.8);
     padding: 10px;
@@ -30,10 +30,11 @@
 
 #previous {
     left: 0;
+    top: 50%;
 }
 
 #play, #pause{
-    top: 50%;
+    bottom: 0;
     right: 46%;
 }
 
@@ -43,6 +44,7 @@
 
 #next {
     right: 0;
+    top: 50%;
 }
 
 #slider:hover #previous, #slider:hover #next, #slider:hover #play, #slider:hover #pause {
@@ -63,6 +65,11 @@
     color: darkolivegreen;
     line-height: 200px;
     opacity: 1;
+}
+
+/** Map **/
+#map{
+    height: 500px;
 }
 
 /** Footer **/
