@@ -4,18 +4,19 @@
     font-family: "Dreamland";
     src: url('fonts/Dreamland.otf');
 }
+
 #slider {
     position: relative;
     margin: auto;
     width: 100%;
 }
 
-#slide{
+#slide-img {
     width: 100%;
     height: 1057px;
 }
 
-#precedent, #suivant {
+#previous, #next ,#play, #pause{
     cursor: pointer;
     transition: opacity 0.3s ease;
     opacity: 0;
@@ -26,43 +27,53 @@
     padding: 10px;
 }
 
-#precedent {
+
+#previous {
     left: 0;
 }
 
-#suivant {
+#play, #pause{
+    top: 50%;
+    right: 46%;
+}
+
+#play {
+    display: none;
+}
+
+#next {
     right: 0;
 }
 
-#slider:hover #precedent, #slider:hover #suivant {
+#slider:hover #previous, #slider:hover #next, #slider:hover #play, #slider:hover #pause {
     opacity: 1;
 }
 
 
-.intro-slide-1{
+.intro-slide-1 {
     position: absolute;
     top: 35%;
     background-color: silver;
 }
 
-.intro-slide-1 > h2{
-        font-size: 5em;
-        font-weight: bold;
-        font-family: "Dreamland";
-        color: darkolivegreen;
-        line-height: 200px;
-        opacity: 1;
+.intro-slide-1 > h2 {
+    font-size: 5em;
+    font-weight: bold;
+    font-family: 'Dreamland';
+    color: darkolivegreen;
+    line-height: 200px;
+    opacity: 1;
 }
 
 /** Footer **/
 
-.img-footer{
+.img-footer {
     position: relative;
     width: 100%;
     height: 200px;
 }
 
-.footer-container{
+.footer-container {
     position: absolute;
     margin-top: 20px;
 }
