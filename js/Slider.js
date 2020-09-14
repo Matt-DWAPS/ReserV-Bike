@@ -10,12 +10,20 @@ class Slider {
         $('#next').click(() => {
             clearInterval(this.interval);
             this.next();
+            if ($('#pause')){
+                $('#play').click();
+                clearInterval(this.interval);
+            }
             this.play();
         });
 
         $('#previous').click(() => {
             clearInterval(this.interval);
             this.prev();
+            if ($('#pause')){
+                $('#play').click();
+                clearInterval(this.interval);
+            }
             this.play();
         });
 
