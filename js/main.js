@@ -1,2 +1,2 @@
 let slider = new Slider;
-let map = new Maps;
+let mymap = new Map;

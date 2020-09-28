@@ -72,6 +72,17 @@
     height: 500px;
 }
 
+#info_reserv{
+    display: block;
+}
+#container_pre_reserv{
+    display: none;
+}
+
+#reservation_form{
+    display: none;
+}
+
 /** Footer **/
 
 .img-footer {

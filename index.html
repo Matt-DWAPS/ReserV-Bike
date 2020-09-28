@@ -77,12 +77,30 @@
             the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
             desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 		<div class="row d-flex justify-content-center">
-			<div id="map" class="col-6">
+			<div id="map" class="col-5">
 
 			</div>
-            <div class="col-5 d-flex justify-content-center">
-                <form class="col-6">
+            <div id="info_reserv" class="col-4  align-self-center">
+                <div class="col-7 justify-content-center border rounded p-3">
+                    <h4 id="title_station">Veuillez selectionner votre station</h4>
+                    <p id="name_station"></p>
+                    <p id="address_station"></p>
+                    <p id="status_station"></p>
+                    <p id="disponibility_bike_station"></p>
+                    <p id="bike_stand_station"></p>
+                    <p id="available_bike_stand_station"></p>
+                    <div id="container_pre_reserv" class=" justify-content-center">
+                        <input id="pre_reserv" class="btn btn-primary" type="button" value="Je reserve mon vélo">
+                    </div>
+                </div>
+            </div>
+            <div id="reservation_form" class="col-4 align-self-center">
+                <form class="col-7 d-flex justify-content-center">
                     <div class="border rounded p-3">
+                        <h4>Informations de réservation</h4>
+                        <div id="station_infos">
+
+                        </div>
                     <div class="form-group col">
                         <label for="lastname">Nom</label>
                         <input type="text" class="form-control-sm" id="lastname" placeholder="Entrez votre nom">
@@ -99,13 +117,6 @@
 
     </div>
 
-</section>
-
-<section>
-    <h2>json</h2>
-    <div id="data" class="border">
-
-    </div>
 </section>
 
 
