@@ -113,7 +113,6 @@ class Map {
                     document.getElementById("title_station").innerHTML = "Station";
                     document.getElementById("name_station").innerHTML = newStation.name;
                     document.getElementById("address_station").innerHTML = newStation.address;
-                    console.log(newStation.available_bike_stands);
                     document.getElementById("status_station").innerHTML = "Actuellement : " + newStation.status;
                     document.getElementById("disponibility_bike_station").innerHTML = "Vélos disponible : " + newStation.available_bikes;
                     document.getElementById("bike_stand_station").innerHTML = "Support vélos : " + newStation.bike_stands;
