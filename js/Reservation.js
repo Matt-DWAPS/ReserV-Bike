@@ -1,47 +1,68 @@
 class Reservation {
-    constructor() {
-        this.reservation_form = $('#reservation_form');
-        this.storage = localStorage;
-        this.reservation_lastname= document.getElementById("lastname");
-        this.reservation_firstname= document.getElementById("firstname");
-        this.input_reservartion_form = document.getElementById("btn_reservation_form");
+    constructor(reservation_form, timer, canvas) {
+        this.reservation_form = $('#reservation_form'); //Formulaire de résa
+        this.reservation_lastname = $('#lastname'); //Champ "nom" de résa
+        this.reservation_firstname = $('#firstname');//Champ "prénom" de résa
+        this.input_reservation_form = $('#btn_reservation_form');//Bouton de résa
+
+        this.Min_timer = 20;
+        this.sec_timer = 0;
+        this.canvas = canvas;
         this.initSettings();
 
-        function storageAvailable(type) {
-            try {
-                let storage = window[type],
-                    x = '__storage_test__';
-                storage.setItem(x, x);
-                storage.removeItem(x);
-                return true;
-            }
-            catch(e) {
-                return e instanceof DOMException && (
-                        // everything except Firefox
-                    e.code === 22 ||
-                    // Firefox
-                    e.code === 1014 ||
-                    // test name field too, because code might not be present
-                    // everything except Firefox
-                    e.name === 'QuotaExceededError' ||
-                    // Firefox
-                    e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-                    // acknowledge QuotaExceededError only if there's something already stored
-                    storage.length !== 0;
-            }
-        }
+        $(this.input_reservation_form).click(this.addInLocalStorage());
 
+    } // Fin du constructeur
+
+    initSettings() { // Démarrage de la reservation
+        $(document).ready(($) => { // Lorsque le DOM est prêt
+            if (!this.storageAvailable('localStorage')) {
+                console.log("Impossible d'utiliser local storage!");
+            }
+            if (!localStorage.name) { // s'il n'y a pas d'élément name, on laisse l'utilisateur faire
+                console.log("Veuillez renseigner vos identifiants"); // populateStorage();
+            } else { // si l'élément est présent (sauvegardé), on active les changements sauvegardés
+                this.registration();
+            }
+        });
+    };
+
+    storageAvailable(type) {
+        try {
+            let storage = window[type],
+                x = '__storage_test__';
+            storage.setItem(x, x);
+            storage.removeItem(x);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    };
+
+    preReservation(event){
+        event.preventDefault();
+        console.log("champ vide");
 
 
     }
-    initSettings(){
-        $(document).ready(($) => {
-            if (storageAvailable('sessionStorage')) {
-                console.log('top !')
-            }
-            else {
-                console.log('raté !')
-            }
-        })
+
+    addInLocalStorage() { // enregistrer des valeurs
+        localStorage.lastname = this.reservation_lastname.val(); // enregistre la valeur nom
+        localStorage.firstname = this.reservation_firstname.val(); // enregistre la valeur prénom
+        sessionStorage.station = $('#name_station').text(); // enregistre (temporairement) la valeur station
+
+        console.log(`Prénom et nom : ${localStorage.getItem('firstname')} ${localStorage.getItem('lastname')} réservé à la station ${sessionStorage.getItem('station')}`);
+
+        this.registration();
+    };
+
+    registration(){
+       let isFirstname = localStorage.name;
+       let islastname = localStorage.lastname;
+       let stationName = sessionStorage.station;
+
+       this.reservation_firstname.val(isFirstname);
+       this.reservation_lastname.val(islastname);
+
     }
 }
