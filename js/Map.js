@@ -96,6 +96,7 @@ class Map {
                     document.getElementById("reservation_form").style.display= "none";
                     document.getElementById("info_reserv").style.display= "block";
                     document.getElementById("container_pre_reserv").style.display= "none";
+                    $("#canvas").css("display", "none");
                 }
 
                 //Au click sur une station ajoute les infos la concernant

@@ -61,7 +61,7 @@
 .intro-slide-1 > h2 {
     font-size: 5em;
     font-weight: bold;
-    font-family: 'Dreamland';
+    font-family: 'Dreamland', serif;
     color: darkolivegreen;
     line-height: 200px;
     opacity: 1;
@@ -73,13 +73,18 @@
 }
 
 #info_reserv{
-    display: block;
+    display: flex;
 }
 #container_pre_reserv{
     display: none;
 }
 
 #reservation_form{
+    display: none;
+}
+
+/** CANVAS **/
+#canvas{
     display: none;
 }
 
