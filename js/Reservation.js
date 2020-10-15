@@ -1,35 +1,40 @@
 class Reservation {
-    constructor(canvas) {
+    constructor() {
+        this.min = 20;
+        this.sec = 60;
+
         this.reservation_form = $('#reservation_form'); //Formulaire de résa
-        this.input_lastname = $('#lastname').val //Champ "nom" de résa
-        this.input_firstname = $('#firstname');//Champ "prénom" de résa
+        this.input_lastname = $('#lastname').val(); //Champ "nom" de résa
+        this.input_firstname = $('#firstname').val();//Champ "prénom" de résa
+
+        this.station_reservation = $('#name_station').text();
         this.input_reservation_form = $('#btn_reservation_form');//Bouton de résa
-        this.min_timer = 20;
-        this.sec_timer = 0;
-        this.canvas = canvas;
+        this.sessionFirstname = localStorage.getItem("Prénom");
+        this.sessionLastname = localStorage.getItem("Nom");
+        //this.canvas = sign.initialisation();
+
+
+        setTimeout("compteArebours()",60000);
+            function compteArebours()
+            {
+                reservation.min=reservation.min-1;
+                $("#time").html(reservation.min);
+
+                if(this.min>0)
+                {setTimeout("compteArebours()",60000);}
+
+                else if(this.min===0)
+                alert("fini");
+
+            }
+
 
         this.initSettings();
-        document.getElementById('btn_reservation_form').addEventListener('click', (e) => {
 
-            if ($('#lastname').val !== "" || $('#firstname').val !== ""){
-
-                $("#canvas").css("display", "block");
-
-                localStorage.setItem("Prénom",$('#firstname').val());
-                localStorage.setItem("Nom",$('#lastname').val());
-                //localStorage.clear();
-                localStorage.getItem("Nom");
-                localStorage.getItem("Prénom");
-            } else {
-                alert("Veuillez remplir tout les champs")
-            }
-            sessionStorage.station = $('#name_station').text(); // enregistre (temporairement) la valeur station
-
-            console.log(`Nom et prénom : ${localStorage.getItem('Nom')} ${localStorage.getItem('Prénom')} réservé à la station ${sessionStorage.getItem('station')}`);
-
-            //this.registration();
-        })
-
+        // Au clic sur le boutton je reserve
+        this.input_reservation_form.click(function(){
+            reservation.reservationCheck();
+        });
 
     } // Fin du constructeur
 
@@ -59,17 +64,60 @@ class Reservation {
         }
     };
 
-    preReservation(event){
-        event.preventDefault();
-        console.log("champ vide");
+    reservationCheck(){
+        if ($('#lastname').val() !== "" || $('#firstname').val() !== ""){
+            localStorage.clear();
+            sessionStorage.clear();
+            localStorage.setItem("Prénom",$('#firstname').val());
+            localStorage.setItem("Nom",$('#lastname').val());
+
+            sessionStorage.setItem("station",$('#name_station').text()); // enregistre (temporairement) la valeur station
+            this.start();
+            $("#lastnameSession").html(reservation.sessionLastname);
+            $("#firstnameSession").html(reservation.sessionFirstname);
+        } else {
+            $("#form-error-renseignement").css("display", "block");
+        }
+        //this.registration();
     }
 
     reservation_exist(){
+        if (localStorage.length !== 0){
+            $("#lastnameSession").html(reservation.sessionLastname);
+            $("#firstnameSession").html(reservation.sessionFirstname);
+        }
         let lastname =localStorage.getItem("Nom");
         console.log(name);
         let firstname =localStorage.getItem("Prénom");
-        document.getElementById("lastnameSession").innerHTML = lastname;
-        document.getElementById("firstnameSession").innerHTML = firstname;
+        $("#lastnameSession").innerHTML = lastname;
+        $("#firstnameSession").innerHTML = firstname;
 
     }
+
+    start_timer() {
+        //let timer=setInterval(reservation.min, 250);
+        if(reservation.sec > 0) {
+            reservation.sec--;
+            document.getElementById("second").innerHTML = reservation.sec + " secondes restantes";
+            if (reservation.sec === 0){
+                reservation.min--;
+                document.getElementById("time").innerHTML = reservation.min + " minutes";
+            }
+        }
+        else if (reservation.min === 0){
+            this.stop_timer();
+            document.getElementById("time").innerHTML ="reservation terminé";
+        }
+    }
+
+    start(){
+        setTimeout(this.start_timer,500);
+    }
+
+    stop_timer()
+    {
+        clearInterval(reservation.min);
+    }
+
 }
+let reservation = new Reservation();
