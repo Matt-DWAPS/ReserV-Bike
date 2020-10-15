@@ -100,11 +100,12 @@
                         <label for="firstname" class="col-form-label">Prénom</label>
                         <input type="text" class="form-control" id="firstname" placeholder="Entrez votre prénom">
                     </div>
-                    <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary">Je reserve</button>
-                        <div id="canvas" class="col-auto mt-3">
+                        <p class="text-danger" id="form-error-renseignement">*veuillez renseigner tous les champs</p>
+                        <div id="signature" class="col-auto mt-3">
                             <p>Signature</p>
                             <canvas class="border" width="300" height="150"></canvas>
                         </div>
+                    <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary">Je reserve</button>
                     </div>
 
                 </form>
@@ -113,7 +114,7 @@
 		</div>
     <div id="session" class=" col-12 border">
         <h3>Réservation efféctué par <span id="lastnameSession"></span> <span id="firstnameSession"></span></h3>
-        <h3>Il vous reste <span id="time"></span> </h3>
+        <h3>Il vous reste <span id="time"></span> <span id="second"></span> </h3>
     </div>
 
 
