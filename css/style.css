@@ -92,6 +92,10 @@
     display: none;
 }
 
+#btn_canceled_reservation{
+    display: none;
+}
+
 /** Footer **/
 
 .img-footer {
