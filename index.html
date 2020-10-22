@@ -104,7 +104,10 @@
                             <p>Signature</p>
                             <canvas class="border" width="300" height="150"></canvas>
                         </div>
-                    <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary">Je reserve</button>
+                        <div class="btn_form d-flex justify-content-center">
+                            <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary">Je reserve</button>
+                            <button id="btn_canceled_reservation" type="button" name="submit" class="btn btn-primary">Annulé ma reservation</button>
+                        </div>
                     </div>
 
                 </form>
@@ -112,12 +115,9 @@
             </div>
 		</div>
     <div id="session" class=" col-12 border">
-        <h3>Réservation efféctué par <span id="lastnameSession"></span> <span id="firstnameSession"></span></h3>
-        <h3>Il vous reste <span id="minutely"></span></h3>
+        <h3><span id="lastnameSession"></span> <span id="firstnameSession"></span></h3>
+        <h3><span id="minutely"></span></h3>
     </div>
-
-
-
 </section>
 
 
