@@ -101,13 +101,15 @@
                         <input type="text" class="form-control" id="firstname" placeholder="Entrez votre prénom">
                     </div>
                         <p class="text-danger" id="form-error-renseignement">*veuillez renseigner tous les champs</p>
-                        <div id="signature" class="col-auto mt-3">
-                            <p>Signature</p>
-                            <canvas class="border" width="300" height="150"></canvas>
-                        </div>
+                        <p>Signature</p>
+                        <canvas id="canvas-sign" class="border" width="300" height="200"></canvas>
+                        <button id="btn_erased_signature" type="button" name="errase" class="btn btn-primary m-3">Effacer la signature</button>
+                        <button id="btn_confirm_signature" type="button" name="confirm" class="btn btn-primary m-3">Valider la signature</button>
+                        <p class="text-danger" id="verif-saisie"></p>
+                        <p class="text-danger" id="confirmation"></p>
                         <div class="btn_form d-flex justify-content-center">
-                            <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary">Je reserve</button>
-                            <button id="btn_canceled_reservation" type="button" name="submit" class="btn btn-primary">Annulé ma reservation</button>
+                            <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary mt-3">Je reserve</button>
+                            <button id="btn_canceled_reservation" type="button" name="submit" class="btn btn-primary mt-3">Annulé ma reservation</button>
                         </div>
                     </div>
 
@@ -186,6 +188,7 @@
 <script src="js/Ajax.js"></script>
 <script src="js/Map.js"></script>
 <script src="js/Reservation.js"></script>
+<script src="js/Signature.js"></script>
 <script src="js/main.js"></script>
 
 </body>

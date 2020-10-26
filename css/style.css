@@ -13,7 +13,8 @@
 
 #slide-img {
     width: 100%;
-    height: 1057px;
+    height: 100vh;
+    object-fit: cover;
 }
 
 #previous, #next ,#play, #pause{
@@ -68,6 +69,7 @@
 }
 
 /** Map **/
+
 #map{
     height: 500px;
 }
@@ -94,6 +96,24 @@
 
 #btn_canceled_reservation{
     display: none;
+}
+
+/** Canvas **/
+
+#btn_erased_signature{
+/** display: ;**/
+}
+
+#btn_confirm_signature{
+/** display: ;**/
+}
+
+#verif-saisie{
+ display: none;
+}
+
+#confirmation{
+ display: none;
 }
 
 /** Footer **/
