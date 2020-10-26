@@ -59,10 +59,16 @@ class Map {
             })
 
 
+
+
         // Appel de l'API JCdecaux
         ajaxGet(this.apiKey, function (reponse) {
+
             // Transforme la réponse en un tableau
             let allStations = JSON.parse(reponse);
+
+            //Boutton pour passer au formulaire initialiser a fermé
+            let button_reserv = document.getElementById('pre_reserv');
 
             for (let station of allStations) {
                 let newStation = Object.create(mymap.stationObject);
@@ -71,17 +77,15 @@ class Map {
 
                 let iconBase = mymap.greenIcon;
 
-                if (newStation.status === "OPEN") {
+                if (newStation.status === "OPEN" && newStation.available_bikes >= 1) {
                     newStation.status = " OUVERT";
                     if (newStation.available_bikes < 10) { // moins de 10 places restantes, il devient orange
                         iconBase = mymap.orangeIcon;
-                        if (newStation.available_bikes === 0) { // à 0, il devient rouge
-                            iconBase = mymap.redIcon;
-                        }
                     }
-                } else {
+                }
+                if (newStation.status === "CLOSE"){
                     newStation.status = " FERMEE";
-                    newStation.available_bikes = 0;
+                    iconBase = mymap.redIcon;
                 }
                 let marker = L.marker([newStation.position.lat, newStation.position.lng], {icon: iconBase}).addTo(mymap.map)
                 marker.bindPopup("<p>" + station.name + "</p>" + "<p>" + station.address + "</p>");
@@ -102,10 +106,14 @@ class Map {
                 marker.addEventListener("click", selectStation);
 
                 function selectStation() {
-                    if (newStation.status === " FERMEE") {
-                        let button_reserv = $('#pre_reserv');
-                        button_reserv.disabled = true;
-                        button_reserv.value = "Station fermée";
+                    if (newStation.status === " OUVERT" && newStation.available_bikes >= 1){
+                        console.log("fermé");
+                        button_reserv.disabled = false;
+                        $('#disable-reservation-warning').css("display", "none");
+                    }
+                    if (newStation.status === " FERMEE" || newStation.available_bikes === 0){
+                        button_reserv.disabled  = true;
+                        $('#disable-reservation-warning').css("display", "block");
                     }
                     $('#info_reserv').css("display", "block");
                     $('#container_pre_reserv').css("display", "block");
