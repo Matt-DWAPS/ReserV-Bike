@@ -85,6 +85,7 @@ class Signature {
 
     errase(){
         // 0,0 correspond aux coordonnées du coin supérieur gauche du canvas
+        //width, height correspondent aux tailles definies du canvas
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
     }
 }
