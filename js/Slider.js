@@ -3,6 +3,12 @@ class Slider {
         this.images = ['content/FullScreenHeader1.jpg', 'content/FullScreenHeader2.jpg', 'content/FullScreenHeader3.jpg'];
         this.imageCurrent = 0;
         $('#slide-img').attr("src", this.images[this.imageCurrent]);
+        this.text = [
+            "1. Selectionnez la station de votre choix",
+            "2. Renseignez vos informations, signé et reserver !",
+            "3. Votre vélo est disponible pour une durée de 20 minute dans la station selectionnée, bonne balade !"];
+        this.textCurrent = 0;
+        $('#text_slider').html(this.text[this.textCurrent]);
         this.run = true;
         this.play();
 
@@ -61,22 +67,30 @@ class Slider {
     }
 
     next() {
-        if (this.images.length - 1 === this.imageCurrent) {
+        if (this.images.length - 1 === this.imageCurrent
+            && this.text.length - 1 === this.textCurrent) {
             this.imageCurrent = 0;
+            this.textCurrent = 0;
 
         } else {
             this.imageCurrent++;
+            this.textCurrent++;
         }
         $('#slide-img').attr("src", this.images[this.imageCurrent]);
+        $('#text_slider').html(this.text[this.textCurrent]);
     }
 
     prev() {
-        if (this.imageCurrent > 0 ) {
+        if (this.imageCurrent > 0
+        && this.textCurrent > 0) {
             this.imageCurrent --;
+            this.textCurrent --;
         } else {
             this.imageCurrent = this.images.length -1;
+            this.textCurrent = this.text.length - 1;
         }
         $('#slide-img').attr("src", this.images[this.imageCurrent]);
+        $('#text_slider').html(this.text[this.textCurrent]);
     }
 
     defiled() {

@@ -1,8 +1,8 @@
 /** Slider **/
 
 @font-face {
-    font-family: "Dreamland";
-    src: url('fonts/Dreamland.otf');
+    font-family: "Kind and Rich";
+    src: url('fonts/Kind and Rich.otf');
 }
 
 #slider {
@@ -56,16 +56,17 @@
 .intro-slide-1 {
     position: absolute;
     top: 35%;
-    background-color: silver;
+    background-color: rgba(192,192,192,0.5);
 }
 
 .intro-slide-1 > h2 {
-    font-size: 5em;
+    font-size: 4em;
     font-weight: bold;
-    font-family: 'Dreamland', serif;
-    color: darkolivegreen;
-    line-height: 200px;
+    font-family: 'Kind and Rich', serif;
+    color: orangered;
+    line-height: 100px;
     opacity: 1;
+
 }
 
 /** Map **/
