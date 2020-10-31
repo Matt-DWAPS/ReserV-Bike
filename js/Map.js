@@ -111,7 +111,6 @@ class Map {
 
                 function selectStation() {
                     if (newStation.status === " OUVERT" && newStation.available_bikes >= 1){
-                        console.log("fermé");
                         button_reserv.disabled = false;
                         $('#disable-reservation-warning').css("display", "none");
                     }

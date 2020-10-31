@@ -89,7 +89,8 @@
     display: none;
 }
 /** CANVAS **/
-#canvas{
+#canvas{}
+
 #form-error-renseignement{
     display: none;
 }
@@ -108,9 +109,6 @@
 /** display: ;**/
 }
 
-#verif-saisie{
- display: none;
-}
 
 #confirmation{
  display: none;

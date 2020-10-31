@@ -23,8 +23,8 @@ class Signature {
         // Initialisation du clic vertical a 0
         this.axe_Y = 0;
 
-        // taille et la position de l'élément canvas
-        this.rect = this.canvas.getBoundingClientRect();
+        this.valid = false;
+        
         // Evenement lors du clic
         this.canvas.addEventListener("mousedown", (e) =>{
             // je signe
@@ -35,8 +35,7 @@ class Signature {
             // On retire le nombre de pixel horizontal et vertical aux coordonnées des clics
             this.axe_X = e.clientX - this.canvas.getBoundingClientRect().left;
             this.axe_Y = e.clientY - this.canvas.getBoundingClientRect().top;
-            console.log(this.axe_X);
-            console.log(this.axe_Y);
+
         })
 
         this.canvas.addEventListener("mousemove", (e) =>{
@@ -49,7 +48,21 @@ class Signature {
                 signe.draw(this.axe_X, this.axe_Y, current_X, current_Y);
                 this.axe_X = current_X;
                 this.axe_Y = current_Y;
+                signe.valid = true;
             }
+        })
+
+        // Vérifie si une signature est présente dans le canvas
+        document.getElementById('btn_confirm_signature').addEventListener("click", function (){
+            if (signe.valid === true){
+                $('#confirmation').html("Signature valide, vous pouvez confirmer votre réservation");
+                $('#confirmation').css("color", "green");
+            } else{
+                $('#confirmation').html("Signature invalide, veuillez recommencer");
+                $('#confirmation').css("color", "red");
+            }
+            $('#confirmation').css("display", "block");
+
         })
 
         // Lors du relachement du clic ont considère qu'il ne signe plus
@@ -87,5 +100,7 @@ class Signature {
         // 0,0 correspond aux coordonnées du coin supérieur gauche du canvas
         //width, height correspondent aux tailles definies du canvas
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+        signe.valid = false;
+        $('#confirmation').css("display", "none");
     }
 }
