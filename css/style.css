@@ -5,6 +5,7 @@
     src: url('fonts/Kind and Rich.otf');
 }
 
+
 #slider {
     position: relative;
     margin: auto;
@@ -72,7 +73,7 @@
 /** Map **/
 
 #map{
-    height: 500px;
+    height: 100vh;
 }
 
 #info_reserv{
@@ -102,14 +103,6 @@
 
 #btn_canceled_reservation{
     display: none;
-}
-
-#btn_erased_signature{
-/** display: ;**/
-}
-
-#btn_confirm_signature{
-/** display: ;**/
 }
 
 

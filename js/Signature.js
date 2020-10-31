@@ -55,8 +55,14 @@ class Signature {
         // Vérifie si une signature est présente dans le canvas
         document.getElementById('btn_confirm_signature').addEventListener("click", function (){
             if (signe.valid === true){
-                $('#confirmation').html("Signature valide, vous pouvez confirmer votre réservation");
-                $('#confirmation').css("color", "green");
+                if (reservation.input_firstname.val() !== "" && reservation.input_lastname.val() !== ""){
+                    $('#confirmation').html("Signature valide, vous pouvez confirmer votre réservation");
+                    $('#confirmation').css("color", "green");
+                } else {
+                    $('#confirmation').html("Signature valide, veuillez remplir vos nom et prénom pour confirmer votre réservation");
+                    $('#confirmation').css("color", "red");
+                }
+
             } else{
                 $('#confirmation').html("Signature invalide, veuillez recommencer");
                 $('#confirmation').css("color", "red");

@@ -102,9 +102,12 @@
                     </div>
                         <p class="text-danger" id="form-error-renseignement">*veuillez renseigner tous les champs</p>
                         <p>Signature</p>
-                        <canvas id="canvas-sign" class="border" width="300" height="200"></canvas>
-                        <button id="btn_erased_signature" type="button" name="errase" class="btn btn-primary m-3">Effacer la signature</button>
-                        <button id="btn_confirm_signature" type="button" name="confirm" class="btn btn-primary m-3">Valider la signature</button>
+                        <canvas id="canvas-sign" class="border"></canvas>
+                        <div class="d-flex">
+                            <button id="btn_erased_signature" type="button" name="errase" class="btn btn-primary m-3">Effacer la signature</button>
+                            <button id="btn_confirm_signature" type="button" name="confirm" class="btn btn-primary m-3">Valider la signature</button>
+                        </div>
+
                         <p id="confirmation"></p>
                         <div class="btn_form d-flex justify-content-center">
                             <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary mt-3">Je reserve</button>
