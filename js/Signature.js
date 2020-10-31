@@ -24,7 +24,7 @@ class Signature {
         this.axe_Y = 0;
 
         this.valid = false;
-        
+
         // Evenement lors du clic
         this.canvas.addEventListener("mousedown", (e) =>{
             // je signe

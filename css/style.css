@@ -88,8 +88,12 @@
 #disable-reservation-warning{
     display: none;
 }
+
+#session{
+    display: none;
+}
+
 /** CANVAS **/
-#canvas{}
 
 #form-error-renseignement{
     display: none;
@@ -98,8 +102,6 @@
 #btn_canceled_reservation{
     display: none;
 }
-
-/** Canvas **/
 
 #btn_erased_signature{
 /** display: ;**/
