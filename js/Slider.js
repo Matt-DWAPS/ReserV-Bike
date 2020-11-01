@@ -4,9 +4,9 @@ class Slider {
         this.imageCurrent = 0;
         $('#slide-img').attr("src", this.images[this.imageCurrent]);
         this.text = [
-            "1. Selectionnez la station de votre choix",
-            "2. Renseignez vos informations, signé et reserver !",
-            "3. Votre vélo est disponible pour une durée de 20 minute dans la station selectionnée, bonne balade !"];
+            "1. Selectionnez la station<br>de votre choix",
+            "2. Renseignez vos informations,<br>signé et reserver !",
+            "3. Votre vélo est disponible pour une durée de 20 minute<br>dans la station selectionnée, bonne balade !"];
         this.textCurrent = 0;
         $('#text_slider').html(this.text[this.textCurrent]);
         this.run = true;
@@ -16,7 +16,7 @@ class Slider {
         $('#next').click(() => {
             clearInterval(this.interval);
             this.next();
-            if ($('#pause')){
+            if ($('#pause')) {
                 $('#play').click();
                 clearInterval(this.interval);
             }
@@ -26,7 +26,7 @@ class Slider {
         $('#previous').click(() => {
             clearInterval(this.interval);
             this.prev();
-            if ($('#pause')){
+            if ($('#pause')) {
                 $('#play').click();
                 clearInterval(this.interval);
             }
@@ -82,11 +82,11 @@ class Slider {
 
     prev() {
         if (this.imageCurrent > 0
-        && this.textCurrent > 0) {
-            this.imageCurrent --;
-            this.textCurrent --;
+            && this.textCurrent > 0) {
+            this.imageCurrent--;
+            this.textCurrent--;
         } else {
-            this.imageCurrent = this.images.length -1;
+            this.imageCurrent = this.images.length - 1;
             this.textCurrent = this.text.length - 1;
         }
         $('#slide-img').attr("src", this.images[this.imageCurrent]);

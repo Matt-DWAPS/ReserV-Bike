@@ -18,7 +18,7 @@
     object-fit: cover;
 }
 
-#previous, #next ,#play, #pause{
+#previous, #next, #play, #pause {
     cursor: pointer;
     transition: opacity 0.3s ease;
     opacity: 0;
@@ -33,9 +33,10 @@
 #previous {
     left: 0;
     top: 50%;
+    z-index: 9999;
 }
 
-#play, #pause{
+#play, #pause {
     bottom: 0;
     right: 46%;
 }
@@ -57,14 +58,13 @@
 .intro-slide-1 {
     position: absolute;
     top: 35%;
-    background-color: rgba(192,192,192,0.5);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .intro-slide-1 > h2 {
     font-size: 4em;
-    font-weight: bold;
     font-family: 'Kind and Rich', serif;
-    color: orangered;
+    color: #FFCC00;
     line-height: 100px;
     opacity: 1;
 
@@ -72,42 +72,43 @@
 
 /** Map **/
 
-#map{
+#map {
     height: 100vh;
 }
 
-#info_reserv{
+#info_reserv {
     display: flex;
 }
-#container_pre_reserv{
+
+#container_pre_reserv {
     display: none;
 }
 
-#reservation_form{
+#reservation_form {
     display: none;
 }
 
-#disable-reservation-warning{
+#disable-reservation-warning {
     display: none;
 }
 
-#session{
+#session {
     display: none;
 }
 
 /** CANVAS **/
 
-#form-error-renseignement{
+#form-error-renseignement {
     display: none;
 }
 
-#btn_canceled_reservation{
+#btn_canceled_reservation {
     display: none;
 }
 
 
-#confirmation{
- display: none;
+#confirmation {
+    display: none;
 }
 
 /** Footer **/
