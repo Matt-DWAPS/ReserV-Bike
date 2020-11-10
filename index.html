@@ -7,16 +7,21 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" integrity="sha512-RLEjtaFGdC4iQMJDbMzim/dOvAu+8Qp9sw7QE4wIMYcg2goVoivzwgSZq9CsIxp4xKAZPKh5J2f2lOko2Ze6FQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css"
+          integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"
+          integrity="sha512-RLEjtaFGdC4iQMJDbMzim/dOvAu+8Qp9sw7QE4wIMYcg2goVoivzwgSZq9CsIxp4xKAZPKh5J2f2lOko2Ze6FQ=="
+          crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body class="container-fluid">
 <section class="row sliderHome">
     <div id="slider">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <nav class=" menu navbar navbar-expand-lg navbar-dark fixed-top">
             <a class="navbar-brand" href="#">ReserVBike</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -25,25 +30,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Réservation
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Vélos de ville</a>
-                            <a class="dropdown-item" href="#">VTT - Cross</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Vélos enfants & Accessoires</a>
-                        </div>
+                        <a class="nav-link" href="index.html">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Plus d'infos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#reservation">Reservation</a>
                     </li>
                 </ul>
             </div>
@@ -67,85 +57,78 @@
         </div>
     </div>
 </section>
-<section class="text-center row">
-    <h2 class="col-12">Réservation </h2>
-
-		<div class="col-12 d-flex justify-content-center">
-			<div id="map" class="col-6"></div>
-            <div id="info_reserv" class="col-5 justify-content-center align-items-center align-self-center">
-                <div class="col-auto justify-content-center border rounded p-3">
-                    <h4 id="title_station">Veuillez selectionner votre station</h4>
-                    <p id="name_station"></p>
-                    <p id="address_station"></p>
-                    <p id="status_station"></p>
-                    <p id="disponibility_bike_station"></p>
-                    <p id="bike_stand_station"></p>
-                    <p id="available_bike_stand_station"></p>
-                    <div id="container_pre_reserv" class=" justify-content-center">
-                        <input id="pre_reserv" class="btn btn-primary" type="button" value="Je reserve mon vélo">
-                        <p id="disable-reservation-warning" class=" text-danger"><i class="fas fa-exclamation-triangle"></i>Veuillez selectionner une station ouverte, qui contienne des vélos disponibles</p>
-                    </div>
+<section class="text-center row mb-5" id="reservation">
+    <div class="col-12 p-4">
+        <h2 class="p-4">Réservation</h2>
+        <div class="row">
+            <div id="map" class="col-sm-12 col-lg-6"></div>
+            <div id="info_reserv" class="mt-5 mt-lg-0 offset-sm-3 col-sm-6 offset-lg-1 col-lg-4 border rounded p-3 justify-content-center align-self-center">
+                <h4 id="title_station">Selectionner votre station</h4>
+                <p id="name_station"></p>
+                <p id="address_station"></p>
+                <p id="status_station"></p>
+                <p id="disponibility_bike_station"></p>
+                <p id="bike_stand_station"></p>
+                <p id="available_bike_stand_station"></p>
+                <div id="container_pre_reserv" class=" justify-content-center">
+                    <input id="pre_reserv" class="btn btn-primary" type="button" value="Je reserve mon vélo">
+                    <p id="disable-reservation-warning" class=" text-danger"><i class="fas fa-exclamation-triangle"></i>Veuillez
+                        selectionner une station ouverte, qui contienne des vélos disponibles</p>
                 </div>
+
             </div>
-            <div id="reservation_form" class="col-5 align-items-center align-self-center">
+            <div id="reservation_form" class="col-sm-12 col-lg-6">
                 <form class="col-12 justify-content-center" id="form">
                     <div class="border rounded p-3">
                         <h4>Informations de réservation</h4>
                         <div id="station_infos"></div>
-                    <div class="form-group col text-center">
-                        <label for="lastname" class="col-form-label">Nom</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Entrez votre nom">
-                    </div>
-                    <div class="form-group col text-center">
-                        <label for="firstname" class="col-form-label">Prénom</label>
-                        <input type="text" class="form-control" id="firstname" placeholder="Entrez votre prénom">
-                    </div>
+                        <div class="form-group col text-center">
+                            <label for="lastname" class="col-form-label">Nom</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="Entrez votre nom">
+                        </div>
+                        <div class="form-group col text-center">
+                            <label for="firstname" class="col-form-label">Prénom</label>
+                            <input type="text" class="form-control" id="firstname" placeholder="Entrez votre prénom">
+                        </div>
                         <p class="text-danger" id="form-error-renseignement">*veuillez renseigner tous les champs</p>
-                        <p>Signature</p>
+                        <p id="title_sign">Signature</p>
                         <canvas id="canvas-sign" class="border"></canvas>
-                        <div class="d-flex">
-                            <button id="btn_erased_signature" type="button" name="errase" class="btn btn-primary m-3">Effacer la signature</button>
-                            <button id="btn_confirm_signature" type="button" name="confirm" class="btn btn-primary m-3">Valider la signature</button>
+                        <div class="row justify-content-center" id="btn_canvas">
+                            <div id="btn_erased" class=" col-sm-6 text-center col-lg-auto">
+                                <button id="btn_erased_signature" type="button" name="errase"
+                                        class="btn btn-primary m-3">
+                                    Effacer la signature
+                                </button>
+                            </div>
+                            <div class="col-sm-6 text-center col-lg-auto">
+                                <button id="btn_confirm_signature" type="button" name="confirm"
+                                        class="btn btn-primary m-3">
+                                    Valider le formulaire
+                                </button>
+                                <button id="btn_reservation_form" type="button" name="confirm"
+                                        class="btn btn-primary m-3">
+                                    Réserver mon vélo
+                                </button>
+                            </div>
                         </div>
 
                         <p id="confirmation"></p>
-                        <div class="btn_form d-flex justify-content-center">
-                            <button id="btn_reservation_form" type="button" name="submit" class="btn btn-primary mt-3">Je reserve</button>
-                            <button id="btn_canceled_reservation" type="button" name="submit" class="btn btn-primary mt-3">Annulé ma reservation</button>
-                        </div>
                     </div>
 
                 </form>
 
             </div>
-		</div>
-    <div id="session" class=" col-12 border">
+        </div>
+    </div>
+    <div id="session" class="col-12 border">
         <h3><span id="lastnameSession"></span> <span id="firstnameSession"></span></h3>
         <h3><span id="minutely"></span></h3>
-    </div>
-</section>
-
-
-<section class="text-center infos row">
-    <h2 class="col-12">Plus d'infos</h2>
-    <div class="col-auto">
-        <p class="border rounded">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-            but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    </div>
-</section>
-<section class="text-center contact row">
-    <h2 class="col-12">Contact</h2>
-    <div class="col-auto">
-        <p class="border rounded">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-            but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div class="row justify-content-center">
+            <button id="btn_canceled_reservation" type="button" name="submit"
+                    class="btn btn-primary m-3">
+                Annulé ma reservation
+            </button>
+        </div>
     </div>
 </section>
 <footer class="row text-center">
@@ -184,8 +167,12 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"
+        integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg=="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
 <script src="js/Slider.js"></script>
 <script src="js/Ajax.js"></script>
 <script src="js/Map.js"></script>

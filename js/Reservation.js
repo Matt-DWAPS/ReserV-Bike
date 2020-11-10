@@ -14,6 +14,7 @@ class Reservation {
         // Au clic sur le boutton je reserve
         document.getElementById('btn_reservation_form').addEventListener('click', function () {
             reservation.reservationCheck();
+            $('#confirmation').css("display", "none");
         });
     } // Fin du constructeur
 
@@ -43,9 +44,6 @@ class Reservation {
     reservationCheck() {
         if (reservation.input_lastname.val() !== "" || reservation.input_firstname.val() !== "") {
             if (signe.valid === true){
-                // Nettoyage des valeurs du local et session storage pour un nouvel enregistrement
-                localStorage.clear();
-                sessionStorage.clear();
 
                 // Enregistrement des nouvelles valeurs
                 localStorage.setItem("prenom", reservation.input_firstname.val());
@@ -59,19 +57,22 @@ class Reservation {
                 $('#confirmation').html("Signature invalide, veuillez recommencer");
                 $('#confirmation').css("color", "red");
             }
+            $("#form-error-renseignement").css("display", "none");
         } else {
             $("#form-error-renseignement").css("display", "block");
         }
     }
 
     reservation_exist() {
-
+        
         if (localStorage.length !== 0) {
             $("#lastnameSession").html(this.session_lastname);
             $("#firstnameSession").html(this.session_firstname);
             $("#lastname").val(this.session_lastname);
             $("#firstname").val(this.session_firstname);
             $("#minutely").html(this.session_timer);
+
+            //Récupération de l'heure de fin prévue pour le timer
             localStorage.getItem("endTimerReservation");
             this.continue_timer();
         }
@@ -92,7 +93,7 @@ class Reservation {
         // si le localstorage contient un temps (précedemment sauvegardé),
         if (localStorage.getItem("finishTime") !== null) {
             let add_time_at_reservation = new Date().getTime() + localStorage.getItem("finishTime");
-            // add_time_at_reservation sera à l'heure actuelle + le reste de temps du timer (donc du paramètre)
+            // add_time_at_reservation sera à l'heure actuelle + le reste de temps du timer
         }
 
         //Démarrage de la boucle /sec
@@ -114,6 +115,17 @@ class Reservation {
         $('#session').css("display", "block");
         $("#btn_reservation_form").css("display", "none");
         $("#btn_canceled_reservation").css("display", "block");
+
+        //Signature valide, on cache le canvas
+        $('#title_sign').css("display", "none");
+        $('#canvas-sign').css("display", "none");
+        //On cache les boutons
+        $('#btn_erased').css("display", "none");
+        $('#btn_confirm_signature').css("display", "none");
+
+        document.getElementById('pre_reserv').disabled = true;
+
+
         let x = setInterval(function () {
             //Récuperation de l'heure actuelle
             let now = new Date().getTime();
@@ -136,39 +148,56 @@ class Reservation {
 
             //Si le compte a rebours arrive a 00:00 alors stop la reservation
             if (returnTime === "00:00"){
+
+                //Reinitialisation du timer
                 clearInterval(x);
-                $("#btn_reservation_form").css("display", "block");
+
+                $("#btn_reservation_form").css("display", "");
                 $("#btn_canceled_reservation").css("display", "none");
                 $('#lastnameSession').css("display", "none");
                 $('#firstnameSession').css("display", "none");
                 $('#minutely').html('votre réservation à expirée');
-                localStorage.clear();
+
+                // On supprime du local storage l'heure de départ et l'heure de fin
+                localStorage.removeItem("endTimerReservation");
+                localStorage.removeItem("finishTime");
                 sessionStorage.clear();
+
+                //On réaffiche le canvas pour la prochaine reservation
+                $('#canvas-sign').css("display", "");
+
+                //On reaffiche les boutons et infos
+                $('#title_sign').css("display", "");
+                $('#btn_canvas').css("display", "");
             }
         }, 1000)
 
         // Au clic sur le boutton "Annulé ma reservation
         document.getElementById("btn_canceled_reservation").addEventListener('click', function (){
+
+            //Reinitialisation du timer
             clearInterval(x);
-            localStorage.clear();
-            sessionStorage.clear();
-            $("#btn_reservation_form").css("display", "block");
+
+            // On supprime du local storage l'heure de départ et l'heure de fin
+            localStorage.removeItem("endTimerReservation");
+            localStorage.removeItem("finishTime");
+
+            // Suppression également de la station du session storage
+            sessionStorage.removeItem("station");
+
             $("#btn_canceled_reservation").css("display", "none");
             $('#lastnameSession').css("display", "none");
             $('#firstnameSession').css("display", "none");
-            $('#minutely').html('votre réservation à était annulée');
+            $('#minutely').html('Votre réservation a était annulé');
 
+            //On réaffiche le canvas pour la prochaine reservation
+            $('#title_sign').css("display", "");
+            $('#canvas-sign').css("display", "");
+
+            //On affiche les boutons
+            $('#btn_erased').css("display", "");
+            $('#btn_confirm_signature').css("display", "");
         });
-
-    }
-
-
-    cancel_reservation(){
-        localStorage.clear();
-        sessionStorage.clear();
-        // time = this.decrement_time();
-        // console.log(time);
-        //clearInterval(time);
 
     }
 }

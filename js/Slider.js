@@ -6,7 +6,7 @@ class Slider {
         this.text = [
             "1. Selectionnez la station<br>de votre choix",
             "2. Renseignez vos informations,<br>signé et reserver !",
-            "3. Votre vélo est disponible pour une durée de 20 minute<br>dans la station selectionnée, bonne balade !"];
+            "3. Votre vélo est disponible pour une durée de 20 minutes<br>dans la station selectionnée, bonne balade !"];
         this.textCurrent = 0;
         $('#text_slider').html(this.text[this.textCurrent]);
         this.run = true;

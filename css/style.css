@@ -1,3 +1,9 @@
+/** Menu **/
+
+.menu {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 /** Slider **/
 
 @font-face {
@@ -73,40 +79,26 @@
 /** Map **/
 
 #map {
-    height: 100vh;
+    height: 75vh;
 }
 
 #info_reserv {
     display: flex;
 }
 
-#container_pre_reserv {
-    display: none;
-}
-
-#reservation_form {
-    display: none;
-}
-
-#disable-reservation-warning {
-    display: none;
-}
-
+#container_pre_reserv,
+#reservation_form,
+#disable-reservation-warning,
 #session {
     display: none;
 }
 
+
 /** CANVAS **/
 
-#form-error-renseignement {
-    display: none;
-}
-
-#btn_canceled_reservation {
-    display: none;
-}
-
-
+#form-error-renseignement,
+#btn_canceled_reservation,
+#btn_reservation_form,
 #confirmation {
     display: none;
 }
