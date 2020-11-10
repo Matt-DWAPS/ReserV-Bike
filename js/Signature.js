@@ -56,6 +56,8 @@ class Signature {
         document.getElementById('btn_confirm_signature').addEventListener("click", function () {
             if (signe.valid === true) {
                 if (reservation.input_firstname.val() !== "" && reservation.input_lastname.val() !== "") {
+
+                    $('#canvas-sign').css("display", "none");
                     $('#confirmation').html("Formulaire valide, vous pouvez confirmer votre réservation");
                     $('#confirmation').css("color", "green");
 
@@ -116,7 +118,7 @@ class Signature {
         // 0,0 correspond aux coordonnées du coin supérieur gauche du canvas
         //width, height correspondent aux tailles definies du canvas
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        // On considère que la signature est fausse puisqu'elle n'existe plus, le canvas et donc vide
+        // On considère que la signature est plus valide puisqu'elle n'existe plus, le canvas et donc vide
         signe.valid = false;
 
 
