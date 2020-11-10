@@ -111,6 +111,10 @@
     height: 200px;
 }
 
+li{
+    list-style-type: none;
+}
+
 .footer-container {
     position: absolute;
     margin-top: 20px;

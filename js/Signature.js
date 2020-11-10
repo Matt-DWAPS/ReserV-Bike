@@ -26,15 +26,22 @@ class Signature {
         // Canvas valid et a false initialement car il est vide au chargement de la page
         this.valid = false;
 
-        // Evenement lors du clic
+        //La signature à était validé
+        this.sign_validation = false;
+
+        // Lorsque le clic de la souris et enfoncé
         this.canvas.addEventListener("mousedown", (e) => {
-            // je signe
-            // Je stocke mes coordonnées de départ
-            // getBoundingClientRect taille et la position de l'élément canvas
-            // On retire le nombre de pixel horizontal et vertical aux coordonnées des clics
-            this.axe_X = e.clientX - this.canvas.getBoundingClientRect().left;
-            this.axe_Y = e.clientY - this.canvas.getBoundingClientRect().top;
-            signe.sign = true;
+            //Si la signature n'a pas déja était validé
+            if (signe.sign_validation === false){
+                // je signe
+                // Je stocke mes coordonnées de départ
+                // getBoundingClientRect taille et la position de l'élément canvas
+                // On retire le nombre de pixel horizontal et vertical aux coordonnées des clics
+                this.axe_X = e.clientX - this.canvas.getBoundingClientRect().left;
+                this.axe_Y = e.clientY - this.canvas.getBoundingClientRect().top;
+                signe.sign = true;
+
+            }
 
         })
 
@@ -57,7 +64,6 @@ class Signature {
             if (signe.valid === true) {
                 if (reservation.input_firstname.val() !== "" && reservation.input_lastname.val() !== "") {
 
-                    $('#canvas-sign').css("display", "none");
                     $('#confirmation').html("Formulaire valide, vous pouvez confirmer votre réservation");
                     $('#confirmation').css("color", "green");
 
@@ -66,19 +72,20 @@ class Signature {
                     $('#lastname').attr('readonly', 'readonly');
                     $('#firstname').attr('readonly', 'readonly');
                     $('#btn_reservation_form').css('display', 'block');
-                    $('#btn_erased').css('display', 'none');
+                    //$('#btn_erased').css('display', 'none');
 
                 } else {
                     $('#confirmation').html("Signature valide, veuillez remplir vos nom et prénom pour confirmer votre réservation");
                     $('#confirmation').css("color", "red");
                 }
                 signe.sign = false;
+
             } else {
                 $('#confirmation').html("Formulaire invalide, veuillez verifier les informations");
                 $('#confirmation').css("color", "red");
             }
             $('#confirmation').css("display", "block");
-
+            signe.sign_validation = true;
         })
 
         // Lors du relachement du clic ont considère qu'il ne signe plus
@@ -127,5 +134,8 @@ class Signature {
         $('#btn_reservation_form').css('display', 'none');
         $('#lastname').removeAttr('readonly');
         $('#firstname').removeAttr('readonly');
+
+        //Ont réinitialise la validation de la signature a false pour permettre une nouvelle signature
+        signe.sign_validation = false;
     }
 }

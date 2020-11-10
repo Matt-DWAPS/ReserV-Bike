@@ -164,6 +164,8 @@ class Reservation {
                 // On supprime du local storage l'heure de départ et l'heure de fin
                 localStorage.removeItem("endTimerReservation");
                 localStorage.removeItem("finishTime");
+
+                // On supprime la station
                 sessionStorage.clear();
 
                 //On réaffiche le canvas pour la prochaine reservation
@@ -172,6 +174,12 @@ class Reservation {
                 //On reaffiche les boutons et infos
                 $('#title_sign').css("display", "");
                 $('#btn_canvas').css("display", "");
+
+                $('#btn_erased').css("display", "");
+                $('#btn_confirm_signature').css("display", "");
+
+                //Ont réinitialise la validation de la signature a false pour permettre une nouvelle signature
+                signe.sign_validation = false;
             }
         }, 1000)
 
@@ -203,6 +211,9 @@ class Reservation {
 
             //On efface la signature précédente
             signe.erase();
+
+            //Ont réinitialise la validation de la signature a false pour permettre une nouvelle signature
+            signe.sign_validation = false;
         });
 
     }
