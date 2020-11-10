@@ -19,14 +19,17 @@ class Reservation {
     } // Fin du constructeur
 
     initSettings() {
-            if (!this.storageAvailable('localStorage')) {
-                console.log("Impossible d'utiliser local storage!");
+        if (!this.storageAvailable('localStorage')) {
+            console.log("Impossible d'utiliser local storage!");
+        }
+        if (!sessionStorage.station) { // s'il n'y a pas d'élément name, on laisse l'utilisateur faire
+            if (localStorage.nom){
+                $("#lastname").val(this.session_lastname);
+                $("#firstname").val(this.session_firstname);
             }
-            if (!localStorage.nom) { // s'il n'y a pas d'élément name, on laisse l'utilisateur faire
-                console.log("Veuillez renseigner vos identifiants");
-            } else { // si l'élément est présent (sauvegardé), on active les changements sauvegardés
-                this.reservation_exist();
-            }
+        } else { // si l'élément est présent (sauvegardé), on active les changements sauvegardés
+            this.reservation_exist();
+        }
     };
 
     storageAvailable(type) {
@@ -64,7 +67,7 @@ class Reservation {
     }
 
     reservation_exist() {
-        
+
         if (localStorage.length !== 0) {
             $("#lastnameSession").html(this.session_lastname);
             $("#firstnameSession").html(this.session_firstname);
@@ -197,6 +200,9 @@ class Reservation {
             //On affiche les boutons
             $('#btn_erased').css("display", "");
             $('#btn_confirm_signature').css("display", "");
+
+            //On efface la signature précédente
+            signe.erase();
         });
 
     }

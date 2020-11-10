@@ -23,23 +23,18 @@ class Signature {
         // Initialisation du clic vertical a 0
         this.axe_Y = 0;
 
+        // Canvas valid et a false initialement car il est vide au chargement de la page
         this.valid = false;
 
         // Evenement lors du clic
         this.canvas.addEventListener("mousedown", (e) => {
             // je signe
-            if (signe.valid === false) {
-                // Je stocke mes coordonnées de départ
-                // getBoundingClientRect taille et la position de l'élément canvas
-                // On retire le nombre de pixel horizontal et vertical aux coordonnées des clics
-                this.axe_X = e.clientX - this.canvas.getBoundingClientRect().left;
-                this.axe_Y = e.clientY - this.canvas.getBoundingClientRect().top;
-                signe.sign = true;
-            } else {
-                signe.sign = false;
-
-            }
-
+            // Je stocke mes coordonnées de départ
+            // getBoundingClientRect taille et la position de l'élément canvas
+            // On retire le nombre de pixel horizontal et vertical aux coordonnées des clics
+            this.axe_X = e.clientX - this.canvas.getBoundingClientRect().left;
+            this.axe_Y = e.clientY - this.canvas.getBoundingClientRect().top;
+            signe.sign = true;
 
         })
 
@@ -96,11 +91,13 @@ class Signature {
             signe.sign = false;
         })
 
+        // On efface la signature
         document.getElementById('btn_erased_signature').addEventListener("click", function (){
             signe.erase();
         })
-    };
-    // Fin du constructeur
+    };// Fin du constructeur
+
+
     //Récuperation des coordonnées de ou a ou on dessine
     draw(depX, depY, destX, destY) {
         //Dessine un nouveau trait
@@ -119,7 +116,10 @@ class Signature {
         // 0,0 correspond aux coordonnées du coin supérieur gauche du canvas
         //width, height correspondent aux tailles definies du canvas
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        // On considère que la signature est fausse puisqu'elle n'existe plus, le canvas et donc vide
         signe.valid = false;
+
+
         $('#confirmation').css("display", "none");
         $('#btn_confirm_signature').css("display", "block");
         $('#btn_reservation_form').css('display', 'none');
